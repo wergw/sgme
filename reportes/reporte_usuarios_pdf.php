@@ -1,7 +1,7 @@
 <?php
 		
 		require_once("dompdf/dompdf_config.inc.php");
-		$conexion=mysql_connect("localhost","root","");
+		$conexion=mysql_connect("localhost","user_sgme","123456");
 		mysql_select_db("sgmdb",$conexion);
 
 

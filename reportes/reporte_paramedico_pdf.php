@@ -14,32 +14,37 @@ $codigoHTML='
 </head>
 <body>
 
-<CENTER><img src="imagenes/logo.png" alt="Generic placeholder image" width="100" height="100"></CENTER>
+<CENTER><img src="../imagenes/logo.png" alt="Generic placeholder image" width="100" height="100"></CENTER>
 <CENTER><p class="text-center">SISTEMA DE GESTION MEDICA DE EMERGENCIA</p></CENTER>
 <table width="100%" border="1" cellspacing="0" cellpadding="0">
   <tr>
-    <td colspan="4" bgcolor="skyblue"><CENTER><strong>CANTIDAD DE PARAMEDICOS POR UBICACIÓN</strong></CENTER></td>
+    <td colspan="3" bgcolor="skyblue"><CENTER><strong>PARAMEDICOS POR UBICACION</strong></CENTER></td>
   </tr>
   <tr bgcolor="red">
     
+    <td><strong>CARGO</strong></td>
     <td><strong>NOMBRE</strong></td>
-    <td><strong>OPERACION</strong></td>
-    <td><strong>FECHA</strong></td>
-    <td><strong>OBSERVACION</strong></td>
+    <td><strong>DIRECCION</strong></td>
+
    
   </tr>';
   
 
 
-$sql=mysql_query("SELECT * FROM bitacora");
+$sql=mysql_query("SELECT pe.nombre as nombre_perfil, p.nombre, p.direccion
+                    FROM personas p                
+                    INNER JOIN usuarios u ON u.persona_id=p.id
+                    INNER JOIN perfiles pe ON pe.id=u.perfil_id
+                    where pe.nombre='paramedico' 
+                    order by p.direccion");
 while($res = mysql_fetch_array($sql)){
 $codigoHTML.='	
 	<tr>
 		
-		<td>'.$res['usuario_id'].'</td>
-		<td>'.$res['operacion'].'</td>
-		<td>'.$res['fecha'].'</td>
-		<td>'.$res['observacion'].'</td>										
+		<td>'.$res['nombre_perfil'].'</td>
+		<td>'.$res['nombre'].'</td>
+		<td>'.$res['direccion'].'</td>
+										
 	</tr>';
 	
 }

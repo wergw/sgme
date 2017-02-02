@@ -14,11 +14,11 @@ $codigoHTML='
 </head>
 <body>
 
-<CENTER><img src="imagenes/logo.png" alt="Generic placeholder image" width="100" height="100"></CENTER>
+<CENTER><img src="../imagenes/logo.png" alt="Generic placeholder image" width="100" height="100"></CENTER>
 <CENTER><p class="text-center">SISTEMA DE GESTION MEDICA DE EMERGENCIA</p></CENTER>
 <table width="100%" border="1" cellspacing="0" cellpadding="0">
   <tr>
-    <td colspan="4" bgcolor="skyblue"><CENTER><strong>LISTA DE USUARIOS</strong></CENTER></td>
+    <td colspan="3" bgcolor="skyblue"><CENTER><strong>LISTA DE USUARIOS</strong></CENTER></td>
   </tr>
   <tr bgcolor="red">
     
@@ -31,14 +31,17 @@ $codigoHTML='
   
 
 
-$sql=mysql_query("SELECT * FROM usuarios");
+$sql=mysql_query("SELECT p.nombre AS nombre_persona, u.usuario, pe.nombre AS perfil_nombre
+                    FROM personas p                
+                    INNER JOIN usuarios u ON u.persona_id=p.id
+                    INNER JOIN perfiles pe ON pe.id=u.perfil_id");
 while($res = mysql_fetch_array($sql)){
 $codigoHTML.='	
 	<tr>
 		
-		<td>'.$res['persona_id'].'</td>
+		<td>'.$res['nombre_persona'].'</td>
 		<td>'.$res['usuario'].'</td>
-		<td>'.$res['perfil_id'].'</td>									
+		<td>'.$res['perfil_nombre'].'</td>									
 	</tr>';
 	
 }

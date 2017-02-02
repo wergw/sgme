@@ -36,19 +36,13 @@
 <!-- Three columns of text below the carousel -->
 <div class="container marketing">
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-6">
       <a href="reportes/reporte_camas_pdf.php" class="thumbnail">
         <img src="imagenes/icono_gestion_camas.png" alt="Generic placeholder image" width="50" height="50">
         <p class="text-center">Reporte de solicitudes de camas</p>
       </a>
     </div>
-    <div class="col-lg-4">
-      <a href="reportes/reporte_especialidad_pdf.php" class="thumbnail">
-        <img src="imagenes/icono_especialidades.png" alt="Generic placeholder image" width="50" height="50">
-        <p class="text-center">Reporte de solicitudes de especialidad</p>
-      </a>
-    </div>
-    <div class="col-lg-4">
+    <div class="col-lg-6">
       <a href="reportes/reporte_paramedico_pdf.php" class="thumbnail">
         <img src="imagenes/icono_especialidades.png" alt="Generic placeholder image" width="50" height="50">
         <p class="text-center">Reporte de paramedicos</p>
@@ -58,13 +52,13 @@
   </div>
 
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-6">
       <a href="reportes/reporte_centros_pdf.php" class="thumbnail">
         <img src="imagenes/icono_centros.png" alt="Generic placeholder image" width="50" height="50">
         <p class="text-center">Reporte de centros</p>
       </a>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-6">
       <a href="reportes/reporte_usuarios_pdf.php" class="thumbnail">
         <img src="imagenes/icono_usuarios.png" alt="Generic placeholder image" width="80" height="80">
         <p class="text-center">Reporte de usuario</p>

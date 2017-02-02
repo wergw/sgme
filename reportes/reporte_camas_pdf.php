@@ -14,7 +14,7 @@ $codigoHTML='
 </head>
 <body>
 
-<CENTER><img src="imagenes/logo.png" alt="Generic placeholder image" width="100" height="100"></CENTER>
+<CENTER><img src="../imagenes/logo.png" alt="Generic placeholder image" width="100" height="100"></CENTER>
 <CENTER><p class="text-center">SISTEMA DE GESTION MEDICA DE EMERGENCIA</p></CENTER>
 <table width="100%" border="1" cellspacing="0" cellpadding="0">
   <tr>
@@ -25,21 +25,32 @@ $codigoHTML='
     <td><strong>CENTRO</strong></td>
     <td><strong>USUARIO</strong></td>
     <td><strong>FECHA DE SOLICITUD</strong></td>
-    <td><strong>OBSERVACION DE SOLICITUD</strong></td>
+    <td><strong>OBSERVACION</strong></td>
+
    
   </tr>';
   
 
 
-$sql=mysql_query("SELECT * FROM operaciones");
+$sql=mysql_query("SELECT c.nombre AS nombre_centro, p.nombre AS nombre_persona, op.fecha_solicitud, op.observacion_solicitud,
+                    CASE op.status_operacion
+                      WHEN 1 THEN 'Solicitud Nueva'
+                      WHEN 2 THEN 'Cama asignada'
+                      WHEN 3 THEN 'Solicitud Cancelada'
+                    END AS status_texto
+                    FROM operaciones op
+                    INNER JOIN centros c ON c.id=op.centro_id
+                    INNER JOIN usuarios u ON u.id=op.usuario_id_solicitud
+                    INNER JOIN personas p ON u.persona_id=p.id;");
 while($res = mysql_fetch_array($sql)){
 $codigoHTML.='	
 	<tr>
 		
-		<td>'.$res['centro_id'].'</td>
-		<td>'.$res['usuario_id_solicitud'].'</td>
+		<td>'.$res['nombre_centro'].'</td>
+		<td>'.$res['nombre_persona'].'</td>
 		<td>'.$res['fecha_solicitud'].'</td>
 		<td>'.$res['observacion_solicitud'].'</td>
+
 
 	</tr>';
 	

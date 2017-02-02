@@ -14,7 +14,7 @@ $codigoHTML='
 </head>
 <body>
 
-<CENTER><img src="imagenes/logo.png" alt="Generic placeholder image" width="100" height="100"></CENTER>
+<CENTER><img src="../imagenes/logo.png" alt="Generic placeholder image" width="100" height="100"></CENTER>
 <CENTER><p class="text-center">SISTEMA DE GESTION MEDICA DE EMERGENCIA</p></CENTER>
 <table width="100%" border="1" cellspacing="0" cellpadding="0">
   <tr>

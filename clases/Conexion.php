@@ -11,8 +11,8 @@
         //Metodos
         public function __construct(){
             $this->host = "localhost";
-            $this->user = "root";
-            $this->pass = "";
+            $this->user = "user_sgme";
+            $this->pass = "123456";
             $this->bd = "sgmdb";
 
             $con = mysql_connect($this->host, $this->user, $this->pass);

@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+.contenedor{
+	border:solid 1px black;
+	width:60%;
+	min-width:400px;
+	margin-top:2%;
+	padding:3%;
+}
+
+.contenedorMenu{
+	width:60%;
+	min-width:400px;
+	margin-top:3%;
+}
+.contenedorMenu a{
+	color:#5335EC;
+}
+ul{
+	list-style:none;
+	margin-left:0px;
+	padding-left:0px;
+}
+.opcionMenu{
+	width:230px;
+	margin-bottom:2%;
+	border:solid 1px orange;
+}
+.opcionMenu:hover{
+	background-color:#E06A25;
+	color:white;
+}
+.opcionMenu:active{
+	background-color:#EC9C72;
+	color:white;
+}
+.imgMenu{
+	width:20%;
+	height:35px;
+}
+.imgMenu img{
+	width:100%;
+	height:100%;
+}
+.textoMenu{
+	width:80%;
+	margin-top:2%;
+}

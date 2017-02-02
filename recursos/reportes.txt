@@ -1,0 +1,11 @@
+-reporte de solicitudes de camas (centro, ambulancia, fecha de solicitud)
+
+-reporte de solicitudes de especialidad (centro, ambulancia, fecha de solicitud)
+
+-reporte de paramedicos (cantidad de paramedico por direccion)
+
+-reporte de centros (lista de centros)
+
+-reporte de especialidades (lista de especialidades)
+
+-reporte de usuarios (lista de usuarios)

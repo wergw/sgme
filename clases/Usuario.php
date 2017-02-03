@@ -72,6 +72,8 @@
                      $this->con->consultaSimple($sql_insert_usuario);
                      
                      return true;
+
+                     // aqui debes hacer el insert en recepcionistas_centros
                 }
             }    
         }

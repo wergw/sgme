@@ -60,6 +60,14 @@
 
                 case "gestion_solicitar_cama":
                     include_once('vistas/gestion/' . $vista . '.php');
+                    break;
+
+                case "gestion_asignar_cama":
+                    include_once('vistas/gestion/' . $vista . '.php');
+                    break;
+
+                case "gestion_cancelar_cama":
+                    include_once('vistas/gestion/' . $vista . '.php');
                     break; 
 
                 case "gestion_actualiza_centro":

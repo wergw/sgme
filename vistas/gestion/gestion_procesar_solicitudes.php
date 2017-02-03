@@ -3,8 +3,10 @@
 	//me traigo el centro al que esta asociado el usuario $_SESSION['id']
 	$centro_id = $controladorCentros->buscarCentro($_SESSION['id']);
 	$row_centro = $controladorCentros->ver($centro_id);
+	$status_operacion=1;
 	//busco las solicitudes del centro
-	$resultado_operaciones = $controladorCentros->listarOperaciones($centro_id);
+	$resultado_operaciones = $controladorCentros->listarOperacionesPorStatus($centro_id, $status_operacion);
+	//$resultado_operaciones = $controladorCentros->listarOperaciones($centro_id);
 ?>
 <!-- menu de opciones -->
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -22,7 +24,7 @@
 	  <div id="navbar" class="navbar-collapse collapse">
 	  	<ul class="nav navbar-nav">
 	  		<li>      
-	  			<a href="?cargar=gestion_inicio">Volver</a>
+	  			<!-- <a href="?cargar=gestion_inicio">Volver</a>-->
 	      	</li>	
 	  	</ul>
 	    <ul class="nav navbar-nav navbar-right">
@@ -56,13 +58,17 @@
 		<!-- //                                     ========================                                     // -->
 		<!-- //                                                                                                  // -->
 		<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-		<table border="1" align="center" class="table table-striped">
+		<?php if (mysql_num_rows($resultado_operaciones)==0){
+			echo "<h4>No hay solicitudes para procesar</h4>";
+		}else{
+		?>
+			<table border="1" align="center" class="table table-striped">
 				<thead>
 					<th>ID</th>
 					<th>Solicitante</th>
 					<th>Fecha solicitud</th>
 					<th>Observaciones</th>
-					<th>Estado</th>
+					<!-- <th>Estado</th>-->
 					<th>Opcion</th>
 				</thead>
 				<tbody>
@@ -72,16 +78,17 @@
 							<td align="center"><?php echo $row_operacion['nombre']; ?></td>
 							<td align="center"><?php echo $row_operacion['fecha_solicitud']; ?></td>
 							<td align="center"><?php echo $row_operacion['observacion_solicitud']; ?></td>
-							<td align="center"><?php echo $row_operacion['status_texto']; ?></td>
+							<!-- <td align="center"><?php echo $row_operacion['status_texto']; ?></td>-->
 							<td align="center">
 								<?php if($row_operacion['status_operacion']==1){?>
-									<a class="btn btn-xs btn-success" href="?cargar=gestion_solicitar_cama&id=<?php echo $row_centro['id']; ?>" role="button">Asignar Cama</a>
-									<a class="btn btn-xs btn-danger" href="?cargar=gestion_solicitar_cama&id=<?php echo $row_centro['id']; ?>" role="button">Cancelar Solicitud</a>
+									<a class="btn btn-xs btn-success" href="?cargar=gestion_asignar_cama&id=<?php echo $row_operacion['id']; ?>" role="button">Asignar Cama</a>
+									<a class="btn btn-xs btn-danger" href="?cargar=gestion_cancelar_cama&id=<?php echo $row_operacion['id']; ?>" role="button">Cancelar Solicitud</a>
 								<?php } else {echo 'No Aplica';}?>
 							</td>
 						</tr>
 					<?php endwhile; ?>
 				</tbody>
 			</table>
+		<?php } //fin del mysql_num_rows ?>
 	</div>
 </div>

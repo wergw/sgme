@@ -142,12 +142,14 @@
         public function ver_disponibilidad(){
             if ($this->especialidad_id == -1){
                 // si especialidad_id es -1 entonces busca sin importar la especialidad
-                $sql = "SELECT c.id, c.codigo, c.nombre, c.direccion, c.telefono, c.camas
+                $sql = "SELECT c.id, c.codigo, c.nombre, c.direccion, c.telefono, c.camas AS camas_disponibles,
+                        (select count(*) FROM operaciones op WHERE op.centro_id=c.id AND op.status_operacion=1) AS camas_reservadas
                         FROM centros c 
                         WHERE c.direccion LIKE '%{$this->direccion}%'
                         AND c.camas > 0;";
             }else{
-                $sql = "SELECT c.id, c.codigo, c.nombre, c.direccion, c.telefono, c.camas
+                $sql = "SELECT c.id, c.codigo, c.nombre, c.direccion, c.telefono, c.camas AS camas_disponibles,
+                        (select count(*) FROM operaciones op WHERE op.centro_id=c.id AND op.status_operacion=1) AS camas_reservadas
                         FROM centros c 
                         INNER JOIN centros_especialidades ce ON ce.centros_id=c.id
                         WHERE ce.especialidades_id='{$this->especialidad_id}'
@@ -188,12 +190,6 @@
             return true;
         }
 
-        public function verOperacionesPorStatus(){
-            $sql = "SELECT * FROM operaciones WHERE centro_id='{$this->centro_id}' AND status_operacion='{$this->status_operacion}';";
-            $resultado = $this->con->consultaRetorno($sql);
-            return $resultado;
-        }
-
         public function listarOperaciones(){
             $sql = "SELECT op.*, p.nombre,
                     CASE op.status_operacion
@@ -207,6 +203,38 @@
                     WHERE centro_id='{$this->centro_id}';";
             $resultado = $this->con->consultaRetorno($sql);
             return $resultado;
+        }
+
+        public function verOperacionesPorStatus(){
+            $sql = "SELECT op.*, p.nombre,
+                    CASE op.status_operacion
+                      WHEN 1 THEN 'Solicitud Nueva'
+                      WHEN 2 THEN 'Cama asignada'
+                      WHEN 3 THEN 'Solicitud Cancelada'
+                    END AS status_texto
+                    FROM operaciones op
+                    INNER JOIN usuarios u ON u.id=op.usuario_id_solicitud
+                    INNER JOIN personas p ON u.persona_id=p.id
+                    WHERE centro_id='{$this->centro_id}' AND status_operacion='{$this->status_operacion}';";
+            $resultado = $this->con->consultaRetorno($sql);
+            return $resultado;
+        }
+
+        public function verOperacion(){
+            $sql = "SELECT op.*, p.nombre
+                    FROM operaciones op
+                    INNER JOIN usuarios u ON u.id=op.usuario_id_solicitud
+                    INNER JOIN personas p ON u.persona_id=p.id
+                    WHERE op.id = '{$this->id}' LIMIT 1";
+            $resultado = $this->con->consultaRetorno($sql);
+            $row = mysql_fetch_assoc($resultado);
+
+            //Set
+            $this->id = $row['id'];
+            $this->centro_id = $row['centro_id'];
+            $this->observacion_solicitud = $row['observacion_solicitud'];
+            $this->nombre = $row['nombre'];
+            return $row;
         }
 
         public function buscarCentro(){

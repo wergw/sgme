@@ -114,12 +114,12 @@
             $this->centro->set('observacion_asignacion', $observacion_asignacion);
             $resultado = $this->centro->asignarCama();
             $usuario_id=$_SESSION['id'];
-            $operacion="Se Asigno la cama a: ".$usuario_id_solicitud;
+            $operacion="Asigna cama, operacion_id ".$operacion_id;
             $this->bitacora->registrarbitacora($usuario_id,$operacion);
             return $resultado;
         }
 
-        public function cancelarCama($operacion_id, $centro_id, $usuario_id_asignacion, $observacion_asignacion){
+        public function cancelarCama($operacion_id, $centro_id, $usuario_id_asignacion, $observacion_cancelacion){
             $this->centro->set('operacion_id', $operacion_id);
             $this->centro->set('usuario_id_cancelacion', $usuario_id_cancelacion);
             $this->centro->set('fecha_cancelacion', date("Y-m-d"));
@@ -127,15 +127,8 @@
             $resultado = $this->centro->cancelarCama();
             // aqui se debe registrar bitacora 
             $usuario_id=$_SESSION['id'];
-            $operacion="Se cancelo la solicitud de cama a: ".$usuario_id_solicitud;
+            $operacion="cancela solicitud de cama, operacion_id ".$operacion_id;
             $this->bitacora->registrarbitacora($usuario_id,$operacion);
-            return $resultado;
-        }
-
-        public function verOperacionesPorStatus($centro_id, $status_operacion){
-            $this->centro->set("centro_id", $centro_id);
-            $this->centro->set("status_operacion", $status_operacion);
-            $resultado = $this->centro->verOperacionesPorStatus();
             return $resultado;
         }
 
@@ -145,6 +138,19 @@
             return $resultado;
 
         }
+
+        public function listarOperacionesPorStatus($centro_id, $status_operacion){
+            $this->centro->set("centro_id", $centro_id);
+            $this->centro->set("status_operacion", $status_operacion);
+            $resultado = $this->centro->verOperacionesPorStatus();
+            return $resultado;
+        }
+
+        public function verOperacion($id){
+            $this->centro->set("id", $id);
+            $datos = $this->centro->verOperacion();
+            return $datos;
+        }        
 
         public function buscarCentro($id){
             $this->centro->set("id", $id);

@@ -76,7 +76,8 @@
 					<th>Nombre</th>
 					<th>Direccion</th>
 					<th>Telefono</th>
-					<th>Camas</th>
+					<th>Camas disponibles</th>
+					<th>Camas reservadas</th>
 					<th>Opcion</th>
 				</thead>
 				<tbody>
@@ -87,7 +88,8 @@
 							<td align="center"><?php echo $row_centro['nombre']; ?></td>
 							<td align="center"><?php echo $row_centro['direccion']; ?></td>
 							<td align="center"><?php echo $row_centro['telefono']; ?></td>
-							<td align="center"><?php echo $row_centro['camas']; ?></td>
+							<td align="center"><?php echo $row_centro['camas_disponibles']; ?></td>
+							<td align="center"><?php echo $row_centro['camas_reservadas']; ?></td>
 							<td align="center">
 								<a class="btn btn-xs btn-warning" href="?cargar=gestion_solicitar_cama&id=<?php echo $row_centro['id']; ?>" role="button">Solicitar Cama</a>
 							</td>

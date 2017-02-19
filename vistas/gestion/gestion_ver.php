@@ -20,6 +20,13 @@
 
 ?>
 <!-- menu de opciones -->
+<style type="text/css">
+            body {
+                background-image: url(imagenes/background2.png);
+                background-repeat: repeat;
+            }
+</style>
+
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 	  <div class="navbar-header">
@@ -29,7 +36,7 @@
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	    </button>
-	    <a class="navbar-brand" href="index.php">SGM</a>
+	    <a class="navbar-brand" href="index.php"><img src="imagenes/logo.png" width="80" height="30"/></a>
 	  </div>
 
 	  <div id="navbar" class="navbar-collapse collapse">
@@ -41,7 +48,7 @@
 	    <ul class="nav navbar-nav navbar-right">
 	    	
 	       	<li>                    
-				<a href="clases/cerrar_sesion.php">Seguridad</a>
+				<a href="#nuevo" role="button" class="btn" data-toggle="modal" data-target="#ModalAyuda">Ayuda</a>
 			</li>
 	        <li>                    
 				<a href="clases/cerrar_sesion.php">Salir</a>
@@ -51,6 +58,35 @@
 	</div>
 </nav>
 <!-- fin menu de opciones -->
+<!-- Modal de Ayuda -->
+<div class="modal fade" id="ModalAyuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<form action="recursos/Manual de usuario Paramedico SGME.pdf" target="_blank" method="POST">
+			<div class="modal-content">
+				
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="ModalAyuda">Ayuda</h4>
+				</div>
+				
+				<div class="modal-body">
+					<div class="row-fluid">
+			            <p>En este apartado podra visualizar todos los centros registrados en el sistema con las especificaciones de su busqueda.</p>
+			            <p><a class="btn btn-xs btn-warning" href="#" role="button">Solicitar Cama</a> Solicita una cama en el centro.</p> 
+			            <br>
+			            <p>Para mas ayuda consulte el manual de usuario <input type="image" name="pdf" src="imagenes/pdf.png" width="30" height="30"/></p>
+			        </div>
+				</div>
+				
+				<div class="modal-footer">
+			        <button class="btn" data-dismiss="modal" aria-hidden="true"><strong><i class="icon-remove"></i> Cerrar</strong></button>
+			    </div>
+
+			</div>
+		</form>
+	</div>
+</div>
+<!-- Fin Modal de Ayuda -->
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 <!-- //                                                                                                                                        // -->
 <!-- //                                                    Seccion de tabla listado                                                            // -->
@@ -68,7 +104,8 @@
 		<?php if (mysql_num_rows($resultado_disponibilidad)==0){
 			echo "<h4>No hay centros disponibles con el criterio seleccionado</h4>";
 		}else{
-		?>
+		?>	
+		<button class="btn btn-sm btn-info" onclick="findMe()">Mostrar tu ubicación</button>
 			<table border="1" align="center" class="table table-striped">
 				<thead>
 					<th>Id</th>
@@ -102,3 +139,45 @@
 		?>
 	</div>
 </div>
+
+
+
+	<div id="map"></div>
+	
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyG8l93tuqSuNQApKY0eHxRL-_yzvJq-8"></script>
+	<script>
+		function findMe(){
+			var output = document.getElementById('map');
+
+			// Verificar si soporta geolocalizacion
+			if (navigator.geolocation) {
+				output.innerHTML = "<p>Tu navegador soporta Geolocalizacion</p>";
+			}else{
+				output.innerHTML = "<p>Tu navegador no soporta Geolocalizacion</p>";
+			}
+
+			//Obtenemos latitud y longitud
+			function localizacion(posicion){
+
+				var latitude = posicion.coords.latitude;
+				var longitude = posicion.coords.longitude;
+
+				var imgURL = "https://maps.googleapis.com/maps/api/staticmap?center="+latitude+","+longitude+"&size=600x300&markers=color:red%7C"+latitude+","+longitude+"&key=AIzaSyDyG8l93tuqSuNQApKY0eHxRL-_yzvJq-8";
+
+				output.innerHTML ="<img src='"+imgURL+"'>";
+
+				
+
+			}
+
+			function error(){
+				output.innerHTML = "<p>No se pudo obtener tu ubicación</p>";
+
+			}
+
+			navigator.geolocation.getCurrentPosition(localizacion,error);
+
+		}
+
+
+	</script>

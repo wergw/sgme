@@ -25,6 +25,14 @@
 ?>
 
 <!-- menu de opciones -->
+
+<style type="text/css">
+            body {
+                background-image: url(imagenes/background2.png);
+                background-repeat: repeat;
+            }
+</style>
+
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 	  <div class="navbar-header">
@@ -34,7 +42,7 @@
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	    </button>
-	    <a class="navbar-brand" href="index.php">SGM</a>
+	    <a class="navbar-brand" href="index.php"><img src="imagenes/logo.png" width="80" height="30"/></a>
 	  </div>
 
 	  <div id="navbar" class="navbar-collapse collapse">
@@ -47,7 +55,7 @@
 	    <ul class="nav navbar-nav navbar-right">
 	    	
 	       	<li>                    
-				<a href="clases/cerrar_sesion.php">Seguridad</a>
+				<a href="#nuevo" role="button" class="btn" data-toggle="modal" data-target="#ModalAyuda">Ayuda</a>
 			</li>
 	        <li>                    
 				<a href="clases/cerrar_sesion.php">Salir</a>
@@ -57,6 +65,34 @@
 	</div>
 </nav>
 <!-- fin menu de opciones -->
+<!-- Modal de Ayuda -->
+<div class="modal fade" id="ModalAyuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<form action="recursos/Manual de usuario Admisitrador SGME.pdf" target="_blank" method="POST">
+			<div class="modal-content">
+				
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="ModalAyuda">Ayuda</h4>
+				</div>
+				
+				<div class="modal-body">
+					<div class="row-fluid">
+			            <p>En este apartado puede eliminar el centro</p>
+			            <p>Tambien tiene la posibilidad de registrar un nuevo centro </p>
+			            <p>Para mas ayuda consulte el manual de usuario <input type="image" name="pdf" src="imagenes/pdf.png" width="30" height="30"/></p>
+			        </div>
+				</div>
+				
+				<div class="modal-footer">
+			        <button class="btn" data-dismiss="modal" aria-hidden="true"><strong><i class="icon-remove"></i> Cerrar</strong></button>
+			    </div>
+
+			</div>
+		</form>
+	</div>
+</div>
+<!-- Fin Modal de Ayuda -->
 
 <div class="row-fluid">
 	<div class="container">

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 01-02-2017 a las 21:26:08
+-- Tiempo de generación: 16-02-2017 a las 19:29:48
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -34,26 +34,26 @@ CREATE TABLE IF NOT EXISTS `bitacora` (
   `status` int(11) NOT NULL DEFAULT '1',
   `observacion` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
 
 --
 -- Volcado de datos para la tabla `bitacora`
 --
 
 INSERT INTO `bitacora` (`id`, `usuario_id`, `operacion`, `fecha`, `status`, `observacion`) VALUES
-(29, 1, 'Inicio de Sesion', '2017-02-01 10:02:37', 1, ''),
-(30, 3, 'Inicio de Sesion', '2017-02-01 12:02:31', 1, ''),
-(31, 1, 'Inicio de Sesion', '2017-02-01 12:02:48', 1, ''),
-(32, 1, 'Inicio de Sesion', '2017-02-01 12:02:53', 1, ''),
-(33, 1, 'Se edito el centro Clinica Avila', '2017-02-01 12:02:21', 1, ''),
-(34, 1, 'Se edito la especialidad: Pedriatia', '2017-02-01 12:02:41', 1, ''),
-(35, 3, 'Inicio de Sesion', '2017-02-01 19:02:08', 1, ''),
-(36, 1, 'Inicio de Sesion', '2017-02-01 19:02:34', 1, ''),
-(37, 1, 'Inicio de Sesion', '2017-02-01 19:02:36', 1, ''),
-(38, 3, 'Inicio de Sesion', '2017-02-01 19:02:37', 1, ''),
-(39, 1, 'Inicio de Sesion', '2017-02-01 19:02:02', 1, ''),
-(40, 1, 'Inicio de Sesion', '2017-02-01 19:02:35', 1, ''),
-(41, 1, 'Inicio de Sesion', '2017-02-01 21:02:34', 1, '');
+(27, 1, 'Inicio de Sesion', '2017-02-07 09:02:35', 1, ''),
+(28, 2, 'Inicio de Sesion', '2017-02-07 10:02:38', 1, ''),
+(29, 2, 'Se solicito cama ', '2017-02-07 10:02:05', 1, ''),
+(30, 3, 'Inicio de Sesion', '2017-02-07 10:02:36', 1, ''),
+(31, 3, 'Se edito el centro Clinica Avila', '2017-02-07 10:02:11', 1, ''),
+(32, 3, 'Asigna cama', '2017-02-07 10:02:32', 1, ''),
+(33, 3, 'Se edito el centro Clinica Avila', '2017-02-07 10:02:54', 1, ''),
+(34, 1, 'Inicio de Sesion', '2017-02-07 10:02:21', 1, ''),
+(35, 1, 'Se creo especialidad: Neurologia', '2017-02-07 10:02:09', 1, ''),
+(36, 1, 'Se edito el centro Clinica Rasetti', '2017-02-07 10:02:48', 1, ''),
+(37, 1, 'Inicio de Sesion', '2017-02-07 11:02:59', 1, ''),
+(38, 1, 'Inicio de Sesion', '2017-02-14 18:02:30', 1, ''),
+(39, 1, 'Inicio de Sesion', '2017-02-14 23:02:57', 1, '');
 
 -- --------------------------------------------------------
 
@@ -69,14 +69,14 @@ CREATE TABLE IF NOT EXISTS `centros` (
   `telefono` varchar(12) COLLATE utf8_spanish_ci NOT NULL,
   `camas` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=23 ;
 
 --
 -- Volcado de datos para la tabla `centros`
 --
 
 INSERT INTO `centros` (`id`, `codigo`, `nombre`, `direccion`, `telefono`, `camas`) VALUES
-(1, 'C001', 'Clinica Avila', 'Zona Centro, Carora', '0251478965', 15),
+(1, 'C001', 'Clinica Avila', 'Zona Centro, Carora', '0251478965', 14),
 (2, 'C002', 'Hospital 002', 'Barquisimeto', '465464', 2),
 (5, 'CE004', 'Ambulatorio de Cabudare', 'Cabudare Centro', '6478954', 10),
 (7, 'C005', 'Policlinica de Cabudare', 'Cabudare', '4567411257', 100),
@@ -84,10 +84,7 @@ INSERT INTO `centros` (`id`, `codigo`, `nombre`, `direccion`, `telefono`, `camas
 (19, 'C007', 'Clinica XYZ', 'Cabudare', '979224585', 5),
 (20, 'C008', 'Clinica Alemana', 'Quilicura', '4447-6587', 4),
 (21, 'C009', 'Clinica IDET', 'Barquisimeto', '0251547898', 8),
-(22, 'C010', 'Ambulatorio de Quibor', 'Quibor', '02534789654', 1),
-(28, 'aaaa', 'aaaa', 'aaaa', '1111', 11),
-(29, 'ssss', 'ssss', 'ssss', '555555', 5),
-(31, 'xxx', 'xxx', 'xxx', '111', 10);
+(22, 'C010', 'Ambulatorio de Quibor', 'Quibor', '02534789654', 1);
 
 -- --------------------------------------------------------
 
@@ -101,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `centros_especialidades` (
   `especialidades_id` int(11) NOT NULL,
   `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=92 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=100 ;
 
 --
 -- Volcado de datos para la tabla `centros_especialidades`
@@ -134,9 +131,13 @@ INSERT INTO `centros_especialidades` (`id`, `centros_id`, `especialidades_id`, `
 (29, 31, 4, 1),
 (61, 0, 3, 1),
 (62, 0, 4, 1),
-(89, 1, 1, 1),
-(90, 1, 2, 1),
-(91, 1, 3, 1);
+(92, 32, 1, 1),
+(93, 32, 2, 1),
+(94, 5, 1, 1),
+(95, 5, 2, 1),
+(96, 5, 4, 1),
+(98, 1, 1, 1),
+(99, 10, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -151,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `especialidades` (
   `status` int(11) NOT NULL DEFAULT '1',
   `observacion` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `especialidades`
@@ -161,7 +162,8 @@ INSERT INTO `especialidades` (`id`, `codigo`, `nombre`, `status`, `observacion`)
 (1, 'ES001', 'Cardiologia', 1, ''),
 (2, 'ES002', 'Traumatologia', 1, ''),
 (3, 'ES003', 'Ginecologia', 1, ''),
-(4, 'ES004', 'Pedriatia', 0, 'AQUI');
+(4, 'ES004', 'Pedriatia', 0, 'AQUI'),
+(5, 'ES009', 'Neurologia', 0, '');
 
 -- --------------------------------------------------------
 
@@ -173,31 +175,24 @@ CREATE TABLE IF NOT EXISTS `operaciones` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `centro_id` int(11) NOT NULL COMMENT 'el id del centro de salud',
   `usuario_id_solicitud` int(11) NOT NULL COMMENT 'el id de usuario del que solicito la cama',
-  `fecha_solicitud` date NOT NULL COMMENT 'fecha en la que se solicito la cama',
+  `fecha_solicitud` datetime NOT NULL COMMENT 'fecha en la que se solicito la cama',
   `observacion_solicitud` varchar(100) CHARACTER SET utf8 DEFAULT 'Sin Observaciones' COMMENT 'observacion de la operacion de solicitud de cama',
   `usuario_id_asignacion` int(11) DEFAULT NULL COMMENT 'id del usuario que realizo el asignacion de cama',
-  `fecha_asignacion` date DEFAULT NULL COMMENT 'fecha en la que se asigno la cama',
+  `fecha_asignacion` datetime DEFAULT NULL COMMENT 'fecha en la que se asigno la cama',
   `observacion_asignacion` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL COMMENT 'observacion de la operacion de asignacion de cama',
   `usuario_id_cancelacion` int(11) DEFAULT NULL COMMENT 'id del usuario que realizo la cancelacion de cama (por ejemplo, si no se llega a concretar la asignacion de cama por cualquier motivo)\n',
-  `fecha_cancelacion` date DEFAULT NULL,
+  `fecha_cancelacion` datetime DEFAULT NULL,
   `observacion_cancelacion` varchar(100) COLLATE utf8_spanish2_ci DEFAULT 'Sin Observaciones',
   `status_operacion` int(11) DEFAULT '1' COMMENT '1-> cama solicitada\n2-> cama asignada\n3-> solicitud cancelada',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `operaciones`
 --
 
 INSERT INTO `operaciones` (`id`, `centro_id`, `usuario_id_solicitud`, `fecha_solicitud`, `observacion_solicitud`, `usuario_id_asignacion`, `fecha_asignacion`, `observacion_asignacion`, `usuario_id_cancelacion`, `fecha_cancelacion`, `observacion_cancelacion`, `status_operacion`) VALUES
-(5, 2, 2, '2017-01-31', 'Paciente sexo masculino con fractura de clavicula expuesta, presion arterial 160-90, latidos 89', NULL, NULL, NULL, NULL, NULL, 'Sin Observaciones', 1),
-(6, 1, 2, '2017-01-31', 'Paciente con crisis hipertensiva, sexo masculino', NULL, NULL, NULL, NULL, NULL, 'Sin Observaciones', 1),
-(7, 19, 2, '2017-02-01', 'pasiente masculino presenta convulciones', NULL, NULL, NULL, NULL, NULL, 'Sin Observaciones', 1),
-(8, 1, 2, '2017-02-01', 'fractura XYZ', NULL, NULL, NULL, NULL, NULL, 'Sin Observaciones', 1),
-(9, 5, 2, '2017-02-01', 'fdfdsfds', NULL, NULL, NULL, NULL, NULL, 'Sin Observaciones', 1),
-(10, 5, 2, '2017-02-01', '', NULL, NULL, NULL, NULL, NULL, 'Sin Observaciones', 1),
-(11, 5, 2, '2017-02-01', '', NULL, NULL, NULL, NULL, NULL, 'Sin Observaciones', 1),
-(12, 5, 2, '2017-02-01', '', NULL, NULL, NULL, NULL, NULL, 'Sin Observaciones', 1);
+(1, 1, 2, '2017-02-07 10:02:05', 'fractura craneocefaica.... etc', 3, '2017-02-07 10:02:32', 'ingreso', 0, '0000-00-00 00:00:00', 'Sin Observaciones', 2);
 
 -- --------------------------------------------------------
 
@@ -237,7 +232,7 @@ CREATE TABLE IF NOT EXISTS `personas` (
   `status` int(11) DEFAULT '1',
   `Observaciones` varchar(45) COLLATE utf8_spanish_ci DEFAULT 'Sin Observaciones',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=27 ;
 
 --
 -- Volcado de datos para la tabla `personas`
@@ -247,8 +242,8 @@ INSERT INTO `personas` (`id`, `cedula`, `nombre`, `direccion`, `telefono`, `stat
 (1, '20188138', 'Jancarlos Alarcon', 'Cabudare', '5478546', 1, 'Sin Observaciones'),
 (2, '15228704', 'Janluis Alarcon', 'Cabudare', '654789', 1, 'Sin Observaciones'),
 (3, '15093409', 'Yaranelly Alvarado', 'Quibor', '64785214', 1, 'Sin Observaciones'),
-(4, '1111', 'fdsfds', 'fdsfsfs', '1111', 1, 'Sin Observaciones'),
-(5, '1234', 'prueba', 'cabudare', '123456', 1, 'Sin Observaciones');
+(25, '123456', 'Junior Segarra', 'Barquisimeto', '042684288811', 1, 'Sin Observaciones'),
+(26, '23001112', 'Isabel Ortegana', 'Carora', '042675341444', 1, 'Sin Observaciones');
 
 -- --------------------------------------------------------
 
@@ -263,14 +258,16 @@ CREATE TABLE IF NOT EXISTS `recepcionistas_centros` (
   `status` int(11) DEFAULT '1',
   `observacion` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `recepcionistas_centros`
 --
 
 INSERT INTO `recepcionistas_centros` (`id`, `usuario_id`, `centro_id`, `status`, `observacion`) VALUES
-(1, 3, 1, 1, NULL);
+(1, 3, 1, 1, ''),
+(2, 25, 2, 1, ''),
+(3, 26, 5, 1, '');
 
 -- --------------------------------------------------------
 
@@ -287,18 +284,18 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `status` int(11) DEFAULT '1',
   `observaciones` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=27 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `persona_id`, `usuario`, `password`, `perfil_id`, `status`, `observaciones`) VALUES
-(1, 1, 'jancarlos', '123456', 1, 1, NULL),
-(2, 2, 'janluis', '123456', 2, 1, NULL),
-(3, 3, 'yaranelly', '123456', 3, 1, NULL),
-(4, 4, 'fdsfds', '123456', 1, 1, NULL),
-(5, 5, 'wergw', '123456', 2, 1, NULL);
+(1, 1, 'root', '1234', 1, 1, ''),
+(2, 2, 'paramedico', '1234', 2, 1, ''),
+(3, 3, 'recepcionista1', '1234', 3, 1, ''),
+(25, 25, 'recepcionista2', '1234', 3, 1, ''),
+(26, 26, 'recepcionista3', '1234', 3, 1, '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -76,7 +76,7 @@
             <form class="form-signin" action="" method="POST">
                 <center><img src="imagenes/logo.png" width="200" height="200"></center><br>
                 <label>Usuario</label><br>
-                <input type="text" name="usuario" maxlength="10" required>
+                <input type="text" name="usuario" maxlength="15" required>
                 <br><br>
                 <label>Password</label><br>
                 <input type="password" name="password" required>

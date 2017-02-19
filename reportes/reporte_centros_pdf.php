@@ -13,12 +13,21 @@ $codigoHTML='
 <title>Documento sin título</title>
 </head>
 <body>
+<script type="text/php"> 
 
-<CENTER><img src="../imagenes/logo.png" alt="Generic placeholder image" width="100" height="100"></CENTER>
+        if ( isset($pdf) ) { 
+
+          $font = Font_Metrics::get_font("helvetica", "bold"); 
+          $pdf->page_text(72, 18, "Pagina: {PAGE_NUM} de {PAGE_COUNT}", $font, 12, array(0,0,0)); 
+
+        } 
+
+</script> 
+<CENTER><img src="../imagenes/logo.png" alt="Generic placeholder image" width="350" height="180"></CENTER>
 <CENTER><p class="text-center">SISTEMA DE GESTION MEDICA DE EMERGENCIA</p></CENTER>
 <table width="100%" border="1" cellspacing="0" cellpadding="0">
   <tr>
-    <td colspan="4" bgcolor="skyblue"><CENTER><strong>LISTA DE CENTROS POR UBICACIÓN</strong></CENTER></td>
+    <td colspan="4" bgcolor="skyblue"><CENTER><strong>LISTA DE CENTROS POR UBICACIÓN '.date("d-m-Y (H:i)").'</strong></CENTER></td>
   </tr>
   <tr bgcolor="red">
     

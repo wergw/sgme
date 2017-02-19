@@ -13,8 +13,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php">SGM</a>
-    </div>
+      <a class="navbar-brand" href="index.php"><img src="imagenes/logo.png" width="80" height="30"/></a>    </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>                    
@@ -113,7 +112,7 @@
     <?php } ?>
     <?php if($_SESSION['pefil_id']==1){ ?>
     <div class="col-lg-4">
-      <a href="reportes/auditoria_pdf.php" class="thumbnail">
+      <a href="?cargar=auditoria_inicio" class="thumbnail">
         <img src="imagenes/icono_auditoria.png" alt="Generic placeholder image" width="50" height="50">
         <p class="text-center">Auditoria</p>
       </a>
@@ -121,7 +120,7 @@
     <?php } ?>
     <?php if($_SESSION['pefil_id']==1){ ?>
     <div class="col-lg-4">
-      <a href="?cargar=reportes_inicio"" class="thumbnail">
+      <a href="?cargar=reportes_inicio" class="thumbnail">
         <img src="imagenes/icono_reportes.png" alt="Generic placeholder image" width="50" height="50">
         <p class="text-center">Reportes</p>
       </a>
@@ -133,7 +132,7 @@
     <?php if($_SESSION['pefil_id']==3){ ?>
     <div class="col-lg-4">
       <a href="?cargar=gestion_actualiza_centro" class="thumbnail">
-        <img src="imagenes/icono_gestion_camas.png" alt="Generic placeholder image" width="50" height="50">
+        <img src="imagenes/icono_centros.png" alt="Generic placeholder image" width="50" height="50">
         <p class="text-center">Actualizar Centro</p>
       </a>
     </div>

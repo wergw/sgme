@@ -27,11 +27,9 @@
             $this->usuario->set("telefono", $telefono);
             $this->usuario->set("perfil_id", $perfil_id);           
             $resultado = $this->usuario->crear();
-            // aqui se debe registrar bitacora 
-            $usuario_id=$_SESSION['id'];
-            $operacion="Creacion de nuevo centro ".$nombre;
-            $this->bitacora->registrarbitacora($usuario_id,$operacion);
-            return $resultado;
+           
+           
+            
 
         }
 

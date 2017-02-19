@@ -21,10 +21,14 @@
         <link rel="stylesheet" href="css/navbar-fixed-top.css">
         <link rel="stylesheet" href="css/alertify.core.css">
         <link rel="stylesheet" href="css/alertify.default.css">
+        <link href="calendario-jquery/calendario_dw/calendario_dw-estilos.css" type="text/css" rel="STYLESHEET">
         <script src="js/ie-emulation-modes-warning.js"></script>
         <script src="js/alertify.min.js"></script>
         <script src="js/jquery.js"></script>     
-        <script src="js/notify.js"></script>         
+        <script src="js/googlemap.js"></script>
+        <script src="js/notify.js"></script>  
+        <script type="text/javascript" src="calendario-jquery/calendario_dw/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="calendario-jquery/calendario_dw/calendario_dw.js"></script>       
 
 <script>
     function solonumeros(e){
@@ -66,6 +70,19 @@
             return false;
         }
     }
+</script>
+    <script>
+        $(document).ready(function(){
+            $("#simple_alert").click(function(){
+                alertify.alert("Registro de paciente exitoso!");
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+$(document).ready(function(){
+   $(".campofecha").calendarioDW();
+})
 </script>
 
     </head>
@@ -126,5 +143,7 @@
         <script src="js/alertify.min.js"></script>         
         <link rel="stylesheet" href="css/alertify.core.css">
         <link rel="stylesheet" href="css/alertify.default.css">
+        <script type="text/javascript" src="calendario-jquery/calendario_dw/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="calendario-jquery/calendario_dw/calendario_dw.js"></script>
     </body>
 </html>

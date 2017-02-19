@@ -96,7 +96,7 @@
         public function solicitarCama($centro_id, $usuario_id_solicitud, $observacion_solicitud){
             $this->centro->set('centro_id', $centro_id);
             $this->centro->set('usuario_id_solicitud', $usuario_id_solicitud);
-            $this->centro->set('fecha_solicitud', date("Y-m-d"));
+            $this->centro->set('fecha_solicitud', date("Y-m-d H:m:s"));
             $this->centro->set('observacion_solicitud', $observacion_solicitud);
             $resultado = $this->centro->solicitarCama();
             // aqui se debe registrar bitacora 
@@ -110,11 +110,11 @@
             $this->centro->set('operacion_id', $operacion_id);
             $this->centro->set('centro_id', $centro_id);
             $this->centro->set('usuario_id_asignacion', $usuario_id_asignacion);
-            $this->centro->set('fecha_asignacion', date("Y-m-d"));
+            $this->centro->set('fecha_asignacion', date("Y-m-d H:m:s"));
             $this->centro->set('observacion_asignacion', $observacion_asignacion);
             $resultado = $this->centro->asignarCama();
             $usuario_id=$_SESSION['id'];
-            $operacion="Asigna cama, operacion_id ".$operacion_id;
+            $operacion="Asigna cama";
             $this->bitacora->registrarbitacora($usuario_id,$operacion);
             return $resultado;
         }
@@ -122,12 +122,12 @@
         public function cancelarCama($operacion_id, $centro_id, $usuario_id_asignacion, $observacion_cancelacion){
             $this->centro->set('operacion_id', $operacion_id);
             $this->centro->set('usuario_id_cancelacion', $usuario_id_cancelacion);
-            $this->centro->set('fecha_cancelacion', date("Y-m-d"));
+            $this->centro->set('fecha_cancelacion', date("Y-m-d H:m:s"));
             $this->centro->set('observacion_cancelacion', $observacion_cancelacion);
             $resultado = $this->centro->cancelarCama();
             // aqui se debe registrar bitacora 
             $usuario_id=$_SESSION['id'];
-            $operacion="cancela solicitud de cama, operacion_id ".$operacion_id;
+            $operacion="cancela solicitud de cama";
             $this->bitacora->registrarbitacora($usuario_id,$operacion);
             return $resultado;
         }

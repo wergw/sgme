@@ -100,14 +100,22 @@
                     include_once('vistas/usuarios/' . $vista . '.php');
                     break;       
 
-                default:
-                    include_once('vistas/centros/centros_error.php');
-
+                
                 //enrutamiento de reportes
                 
                 case "reportes_inicio":
                     include_once('vistas/reportes/' . $vista . '.php');
                     break;
+
+                //enrutamiento de auditoria
+                
+                case "auditoria_inicio":
+                    include_once('vistas/auditoria/' . $vista . '.php');
+                    break;
+    
+
+                default:
+                    include_once('vistas/centros/centros_error.php');   
 
             endswitch;
 

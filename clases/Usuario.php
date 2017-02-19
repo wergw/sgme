@@ -38,7 +38,7 @@
             $resultado = $this->con->consultaRetorno($sql);
             return $resultado;
         }
-
+        
         public function crear(){
             $sql_persona = "SELECT * FROM personas WHERE cedula = '{$this->cedula}'";
             $resultado_persona = $this->con->consultaRetorno($sql_persona);

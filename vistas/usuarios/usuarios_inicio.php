@@ -1,27 +1,33 @@
 <?php 
-$controladorUsuarios = new controladorUsuarios(); 
+$controladorUsuarios = new controladorUsuarios();
+$controladorCentros = new controladorCentros();  
 	$resultadoUsuarios = $controladorUsuarios->index();
+	$resultadoCentros = $controladorCentros->index();
 
 	// aqui se lleva a cabo la creacion de una especialidad nueva
 
 	if(isset($_POST['enviar'])){
 		$r = $controladorUsuarios->crear($_POST['usuario'], $_POST['nombre'], $_POST['cedula'], $_POST['direccion'], $_POST['telefono'], 
-			 $_POST['perfil_id']);
+			 $_POST['perfil_id'], $_POST['recepcionistas_centros']);
 		
 		if($r){
-			//echo "Se ha registrado una nueva especialidad";
-			echo "<script type='text/javascript'>";
-  			echo "alert('Se ha registrado un nuevo Usuario');";
-  			echo "window.location='index.php?cargar=usuarios_inicio'";
-			echo "</script>";
+			header('Location: index.php?cargar=usuarios_inicio');
 		}else{
 			echo "<script type='text/javascript'>";
-  			echo "alertify.alert('El Usuario y/o Cedula ya existe');";
+  			echo "alert('El Usuario se a registrado');";
+  			echo "window.location='index.php?cargar=usuarios_inicio'";
 			echo "</script>";
 		}
 	}
 ?>
 <!-- menu de opciones -->
+<style type="text/css">
+            body {
+                background-image: url(imagenes/background2.png);
+                background-repeat: repeat;
+            }
+</style>
+
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
 	  <div class="navbar-header">
@@ -31,7 +37,7 @@ $controladorUsuarios = new controladorUsuarios();
 	      <span class="icon-bar"></span>
 	      <span class="icon-bar"></span>
 	    </button>
-	    <a class="navbar-brand" href="index.php">SGM</a>
+	    <a class="navbar-brand" href="index.php"><img src="imagenes/logo.png" width="80" height="30"/></a>
 	  </div>
 
 	  <div id="navbar" class="navbar-collapse collapse">
@@ -54,6 +60,19 @@ $controladorUsuarios = new controladorUsuarios();
 </nav>
 <!-- fin menu de opciones -->
 <!-- Modal de registro de Centro -->
+<script>
+function habilitarCombo(valor){
+if(valor==3){
+document.getElementById("perfil_id").disabled = false;
+document.getElementById("centros").disabled = false; 
+}
+else {
+
+document.getElementById("centros").disabled = true; 
+}
+}
+</script>
+
 <div class="modal fade" id="ModalCrearCentro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -87,10 +106,21 @@ $controladorUsuarios = new controladorUsuarios();
 				            </div>
 				            <div class="form-group">
 				            	<label for="perfil_id">Tipo de Usuario</label>
-								<select name="perfil_id" >
+								<select name="perfil_id" id="perfil_id" onchange="habilitarCombo(this.value);">
+									<option value="0">Seleccionar</option>
 									<option value="1">Administrado</option>
 									<option value="2">Paramedico</option>
 									<option value="3">Recepcionista</option>
+								</select>
+								<label for="centros">Centro</label>
+								<select name="centros" id="centros" disabled="true">
+									<option value="0">Seleccionar</option>
+									<?php
+									 while($row=mysql_fetch_array($resultadoCentros))
+ 									{?>
+ 									<option value="<?php echo $row['id']?>"><?php echo $row['nombre'];?></option>
+ 									<?php } ?>
+
 								</select>
 				            </div>
 				            
@@ -109,7 +139,7 @@ $controladorUsuarios = new controladorUsuarios();
 <!-- Modal de Ayuda -->
 <div class="modal fade" id="ModalAyuda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
-		<form action="recursos/ManualDeUsuario.pdf" target="_blank" method="POST">
+		<form action="recursos/Manual de usuario Admisitrador SGME.pdf" target="_blank" method="POST">
 			<div class="modal-content">
 				
 				<div class="modal-header">

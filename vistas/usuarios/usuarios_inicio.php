@@ -8,7 +8,7 @@ $controladorCentros = new controladorCentros();
 
 	if(isset($_POST['enviar'])){
 		$r = $controladorUsuarios->crear($_POST['usuario'], $_POST['nombre'], $_POST['cedula'], $_POST['direccion'], $_POST['telefono'], 
-			 $_POST['perfil_id'], $_POST['recepcionistas_centros']);
+			 $_POST['perfil_id'], $_POST['centro_id']);
 		
 		if($r){
 			header('Location: index.php?cargar=usuarios_inicio');
@@ -64,11 +64,11 @@ $controladorCentros = new controladorCentros();
 function habilitarCombo(valor){
 if(valor==3){
 document.getElementById("perfil_id").disabled = false;
-document.getElementById("centros").disabled = false; 
+document.getElementById("centro_id").disabled = false; 
 }
 else {
 
-document.getElementById("centros").disabled = true; 
+document.getElementById("centro_id").disabled = true; 
 }
 }
 </script>
@@ -108,12 +108,12 @@ document.getElementById("centros").disabled = true;
 				            	<label for="perfil_id">Tipo de Usuario</label>
 								<select name="perfil_id" id="perfil_id" onchange="habilitarCombo(this.value);">
 									<option value="0">Seleccionar</option>
-									<option value="1">Administrado</option>
+									<option value="1">Administrador</option>
 									<option value="2">Paramedico</option>
 									<option value="3">Recepcionista</option>
 								</select>
 								<label for="centros">Centro</label>
-								<select name="centros" id="centros" disabled="true">
+								<select name="centro_id" id="centro_id" disabled="true">
 									<option value="0">Seleccionar</option>
 									<?php
 									 while($row=mysql_fetch_array($resultadoCentros))

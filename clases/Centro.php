@@ -142,13 +142,13 @@
         public function ver_disponibilidad(){
             if ($this->especialidad_id == -1){
                 // si especialidad_id es -1 entonces busca sin importar la especialidad
-                $sql = "SELECT c.id, c.codigo, c.nombre, c.direccion, c.telefono, c.camas AS camas_disponibles,
+                $sql = "SELECT c.id, c.codigo, c.nombre, c.direccion, c.latitud, c.longitud, c.telefono, c.camas AS camas_disponibles,
                         (select count(*) FROM operaciones op WHERE op.centro_id=c.id AND op.status_operacion=1) AS camas_reservadas
                         FROM centros c 
                         WHERE c.direccion LIKE '%{$this->direccion}%'
                         AND c.camas > 0;";
             }else{
-                $sql = "SELECT c.id, c.codigo, c.nombre, c.direccion, c.telefono, c.camas AS camas_disponibles,
+                $sql = "SELECT c.id, c.codigo, c.nombre, c.direccion, c.latitud, c.longitud, c.telefono, c.camas AS camas_disponibles,
                         (select count(*) FROM operaciones op WHERE op.centro_id=c.id AND op.status_operacion=1) AS camas_reservadas
                         FROM centros c 
                         INNER JOIN centros_especialidades ce ON ce.centros_id=c.id

@@ -105,7 +105,6 @@
 			echo "<h4>No hay centros disponibles con el criterio seleccionado</h4>";
 		}else{
 		?>	
-		<button class="btn btn-sm btn-info" onclick="findMe()">Mostrar tu ubicación</button>
 			<table border="1" align="center" class="table table-striped">
 				<thead>
 					<th>Id</th>
@@ -128,12 +127,15 @@
 							<td align="center"><?php echo $row_centro['camas_disponibles']; ?></td>
 							<td align="center"><?php echo $row_centro['camas_reservadas']; ?></td>
 							<td align="center">
+								<?php echo "<a class='btn btn-xs btn-info' onclick='findCentro(".$row_centro['latitud'].",".$row_centro['longitud'].")' role='button'>MAP</a>"; ?>
 								<a class="btn btn-xs btn-warning" href="?cargar=gestion_solicitar_cama&id=<?php echo $row_centro['id']; ?>" role="button">Solicitar Cama</a>
 							</td>
 						</tr>
 					<?php endwhile; ?>
 				</tbody>
 			</table>
+			<br>
+			<button class="btn btn-sm btn-info" onclick="findMe()">Mostrar tu ubicación</button>
 		<?php
 		}
 		?>
@@ -165,9 +167,6 @@
 				var imgURL = "https://maps.googleapis.com/maps/api/staticmap?center="+latitude+","+longitude+"&size=600x300&markers=color:red%7C"+latitude+","+longitude+"&key=AIzaSyDyG8l93tuqSuNQApKY0eHxRL-_yzvJq-8";
 
 				output.innerHTML ="<img src='"+imgURL+"'>";
-
-				
-
 			}
 
 			function error(){
@@ -177,6 +176,31 @@
 
 			navigator.geolocation.getCurrentPosition(localizacion,error);
 
+		}
+
+		function findCentro(latitud, longitud){
+			var output = document.getElementById('map');
+
+			// Verificar si soporta geolocalizacion
+			if (navigator.geolocation) {
+				output.innerHTML = "<p>Tu navegador soporta Geolocalizacion</p>";
+			}else{
+				output.innerHTML = "<p>Tu navegador no soporta Geolocalizacion</p>";
+			}
+
+			//Obtenemos latitud y longitud
+			function localizacion(posicion){
+				var latitude = latitud;
+				var longitude = longitud;
+				var imgURL = "https://maps.googleapis.com/maps/api/staticmap?center="+latitude+","+longitude+"&zoom=15&size=600x300&markers=color:bLue%7Clabel:H%7C"+latitude+","+longitude+"&key=AIzaSyDyG8l93tuqSuNQApKY0eHxRL-_yzvJq-8";
+				output.innerHTML ="<img src='"+imgURL+"'>";
+			}
+
+			function error(){
+				output.innerHTML = "<p>No se pudo obtener tu ubicación</p>";
+			}
+
+			navigator.geolocation.getCurrentPosition(localizacion,error);
 		}
 
 

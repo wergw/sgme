@@ -25,7 +25,7 @@
         <script src="js/ie-emulation-modes-warning.js"></script>
         <script src="js/alertify.min.js"></script>
         <script src="js/jquery.js"></script>     
-        <script src="js/googlemap.js"></script>
+        <!-- <script src="js/googlemap.js"></script>-->
         <script src="js/notify.js"></script>  
         <script type="text/javascript" src="calendario-jquery/calendario_dw/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="calendario-jquery/calendario_dw/calendario_dw.js"></script>       

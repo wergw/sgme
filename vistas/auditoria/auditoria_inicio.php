@@ -67,10 +67,6 @@
 <!-- Three columns of text below the carousel -->
 <div class="container marketing">
   <div class="row">
-
-  <form>
-   Fecha: <input type="text" name="fecha" class="campofecha" size="12">
-</form>
     <div class="col-lg-6">
       <a href="reportes/auditoria_pdf.php" class="thumbnail">
         <img src="imagenes/icono_auditoria.png" alt="Generic placeholder image" width="50" height="50">

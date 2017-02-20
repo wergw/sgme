@@ -19,13 +19,14 @@
             return $resultado;
         }
         
-         public function crear($usuario, $nombre, $cedula, $direccion, $telefono, $perfil_id){
+         public function crear($usuario, $nombre, $cedula, $direccion, $telefono, $perfil_id, $centro_id){
             $this->usuario->set("usuario", $usuario);
             $this->usuario->set("nombre", $nombre);
             $this->usuario->set("cedula", $cedula);
             $this->usuario->set("direccion", $direccion);
             $this->usuario->set("telefono", $telefono);
-            $this->usuario->set("perfil_id", $perfil_id);           
+            $this->usuario->set("perfil_id", $perfil_id);
+            $this->usuario->set("centro_id", $centro_id);            
             $resultado = $this->usuario->crear();
            
            

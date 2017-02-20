@@ -66,14 +66,22 @@
                      $resultado = $this->con->consultaRetorno($sql_buscar_ultima_persona);
                     $row=mysql_fetch_assoc($resultado);
                     $persona_id=$row['id'];
-
                     
                      $sql_insert_usuario = "INSERT INTO usuarios (persona_id, usuario, password, perfil_id) VALUES ($persona_id, '{$this->usuario}','123456', '{$this->perfil_id}')";
                      $this->con->consultaSimple($sql_insert_usuario);
-                     
-                     return true;
+
+                     //se busca la ultima usuario insertado
+                    $sql_buscar_ultimo_usuario = "SELECT id FROM usuarios ORDER BY id DESC LIMIT 1";
+                    $resultado_usuario = $this->con->consultaRetorno($sql_buscar_ultimo_usuario);
+                    $row_usuario=mysql_fetch_assoc($resultado_usuario);
+                    $usuario_id=$row_usuario['id'];
 
                      // aqui debes hacer el insert en recepcionistas_centros
+
+                     $sql_insert_recepcionistas_centros = "INSERT INTO recepcionistas_centros (usuario_id, centro_id) VALUES ($usuario_id, '{$this->centro_id}')";
+                     $this->con->consultaSimple($sql_insert_recepcionistas_centros);
+
+                     return true;
                 }
             }    
         }
